@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f8f7f2;
+  --color-ink: #283e34;
+  --color-muted: #5f6860;
+  --color-accent: #617560;
+  --color-line: #d9ddd2;
+  --color-sage: #e2e9dc;
+  --color-lavender: #ebe6f0;
+  --color-peach: #f3e5d9;
+  --color-mist: #e0e8ed;
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+  }
+
+  body {
+    @apply m-0 bg-paper font-sans text-base leading-7 text-ink antialiased;
+  }
+
+  p {
+    @apply text-muted;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  button,
+  summary,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  a,
+  button,
+  summary {
+    touch-action: manipulation;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  summary:focus-visible {
+    outline: 3px solid #75648c;
+    outline-offset: 5px;
+  }
+
+  summary {
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details[open]>summary .plus {
+    transform: rotate(45deg);
+  }
+
+  ::selection {
+    background: #d6dfcb;
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-[1200px] px-5 sm:px-8 lg:px-10;
+  }
+
+  .section {
+    @apply py-14 sm:py-20 lg:py-24;
+  }
+
+  .eyebrow {
+    @apply mb-4 text-[10px] font-semibold uppercase leading-5 tracking-[0.16em] text-accent sm:text-[11px];
+  }
+
+  .heading {
+    @apply font-serif text-[30px] leading-tight tracking-tight sm:text-4xl lg:text-[42px];
+  }
+
+  .heading em {
+    @apply font-normal text-accent;
+  }
+
+  .body-copy {
+    @apply space-y-4 text-base leading-7;
+  }
+
+  .button {
+    @apply inline-flex min-h-12 items-center justify-center gap-5 rounded-md bg-ink px-5 py-3 text-sm text-paper transition-colors hover:bg-accent;
+  }
+
+  .text-link {
+    @apply inline-flex min-h-11 items-center gap-3 border-b border-line py-2 text-sm text-ink transition-colors hover:text-accent;
+  }
+
+  .note {
+    @apply border-l-2 border-line pl-3 text-xs leading-6 text-muted;
+  }
+
+  .chip {
+    @apply rounded-full border border-[#bdc9ae] px-3 py-1.5 text-xs leading-5 text-ink;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
